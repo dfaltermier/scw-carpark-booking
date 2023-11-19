@@ -1,0 +1,127 @@
+
+.scwacpbm_content {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.scwacpbm_types {
+    float: left;
+    width: 100%;
+}
+.scwacpbm_type {
+    float: left;
+    color: #fff;
+    padding: 3px;
+    margin-top: 5px;
+    margin-right: 5px;
+	text-align: center;
+	height: 60px;
+}
+.scwacpbm_type_name {
+    font-weight: bold;
+}
+.scwacpbm_type_price {
+    font-size: 12px;
+}
+.scwacpbm_date {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+.scwacpbm_date_head {
+    float: left;
+    font-weight: bold;
+	width: 100%;
+}
+.scwacpbm_date_from {
+    float: left;
+    width: 48%;
+}
+.scwacpbm_date_to {
+    float: left;
+    width: 48%;
+    margin-left: 4%;
+}
+.scwacpbm_map {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+	text-align: center;
+}
+.scwacpbm_map_head {
+    float: left;
+    width: 100%;
+    font-weight: bold;
+}
+.scwacpbm_map_bg {
+    display: inline-block;
+	position: relative;
+    max-width: 100%;
+}
+.scwacpbm_map_slot {
+    position: absolute;
+    color: #fff;
+	cursor: pointer;
+}
+.scwacpbm_map_slot.active {
+    border: 1px solid red;
+	box-sizing: border-box;
+}
+.scwacpbm_map_slot.seatbooked {
+    cursor: not-allowed;
+}
+.scwacpbm_map_bg_img {
+    width: 100%;
+    height: 100% !important;
+}
+.scwacpbm_map_bg_color {
+    width: 100%;
+    display: block;
+    height: 100%;
+    text-indent: -9999em;
+}
+
+@media (max-width: 480px){
+	.scwacpbm_map_slot {
+		font-size: 12px;
+	}
+}
+
+.scwacpbm_content.post {
+    float: none !important;
+    max-width: 70% !important;
+}
+.scwacpbm_sendform {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+.scwacpbm_form_item {
+    float: left;
+    width: 100%;
+	margin-top: 10px;
+}
+.scwacpbm_form_item label {
+    float: left;
+    width: 15%;
+}
+.scwacpbm_form_note_input {
+    float: left;
+    width: 240px;
+}
+.scwacpbm_form_submit {
+    margin-left: 15%;
+    background: teal;
+    color: #fff;
+    padding: 3px;
+    cursor: pointer;
+}
+.scwacpbm_total {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    color: #d41414;
+}
+.scwacpbm_total span {
+    float: left;
+}

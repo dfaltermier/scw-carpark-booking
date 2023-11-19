@@ -1,0 +1,515 @@
+
+.form-table th {
+    display: none;
+}
+.form-table td {
+    padding: 0;
+}
+.scwacpbm_content {
+    background: #fff;
+    box-sizing: border-box;
+	float: left;
+	width: 100%;
+	padding: 5px;
+}
+.scwacpbm_add {
+    float: left;
+    width: 100%;
+}
+.scwacpbm_add_head {
+    float: left;
+    width: 100%;
+    font-weight: bold;
+}
+.scwacpbm_add_name {
+    float: left;
+    border: 1px solid #ccc;
+	height: 30px;
+}
+.scwacpbm_add_button {
+    float: left;
+    background: teal;
+    color: #fff;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+	margin-top: 1px;
+}
+.scwacpbm_lots {
+    float: left;
+    width: 100%;
+}
+.scwacpbm_lot {
+    float: left;
+    width: 100%;
+	margin-top: 10px;
+}
+.scwacpbm_lot_head {
+    float: left;
+    background: #416b8f;
+    width: 100%;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+}
+.scwacpbm_lot_head .fa-angle-double-right,
+.scwacpbm_lot_head .fa-angle-double-down {
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffc600;
+    margin-top: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.scwacpbm_lot_head_name {
+    float: left;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.scwacpbm_lot_head_delete {
+    float: right;
+    color: #ff725b;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.scwacpbm_lot_content {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+	display: none;
+}
+.scwacpbm_lot_content_editname {
+    float: left;
+    width: 100%;
+}
+.scwacpbm_lot_content_editname_head {
+    float: left;
+}
+.scwacpbm_lot_content_editname_name {
+    float: left;
+    border: 1px solid #ccc;
+    margin-left: 20px;
+	height: 30px;
+}
+.scwacpbm_lot_content_editname_save {
+    float: left;
+    background: #317439;
+    color: #fff;
+    margin-top: 1px;
+    width: 80px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.scwacpbm_lotbg {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+.scwacpbm_lotbg_label {
+    float: left;
+}
+.scwacpbm_lotbg_con {
+    float: left;
+    margin-left: 20px;
+}
+.scwacpbm_lotbg_con_color {
+    float: left;
+    height: 30px;
+}
+.scwacpbm_lotbg_con_or {
+    float: left;
+    margin-left: 20px;
+	margin-right: 20px;
+}
+.scwacpbm_lotbg_con_image {
+    float: left;
+    height: 30px;
+}
+.scwacpbm_lotbg_con_upload {
+    float: left;
+    background: #bf8c40;
+    color: #fff;
+    width: 100px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    margin-top: 1px;
+}
+.scwacpbm_lotbg_save {
+    float: left;
+    background: #317439;
+    color: #fff;
+    margin-left: 20px;
+    width: 80px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 1px;
+    cursor: pointer;
+}
+.scwacpbm_lotbg_con_bgpreview {
+    float: left;
+}
+.scwacpbm_lotbg_con_bgpreview img {
+    width: 100px;
+}
+.scwacpbm_lottype {
+    float: left;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.scwacpbm_lottype_head {
+    float: left;
+    width: 100%;
+    font-weight: bold;
+}
+.scwacpbm_lottype_add {
+    float: left;
+    width: 100%;
+}
+.scwacpbm_lottype_add_head {
+    float: left;
+    width: 100%;
+	margin-top: 5px;
+}
+.scwacpbm_lottype_add_name {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+}
+.scwacpbm_lottype_add_color {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+	margin-left: 20px;
+}
+.scwacpbm_lottype_add_check {
+    float: left;
+    margin-left: 20px;
+}
+.scwacpbm_lottype_add_button {
+    float: left;
+    background: teal;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    width: 80px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.scwacpbm_lottype_items {
+    float: left;
+    width: 100%;
+	margin-top: 10px;
+}
+.scwacpbm_lottype_item {
+    float: left;
+    width: 100%;
+	margin-top: 3px;
+}
+.scwacpbm_lottype_item_name {
+    float: left;
+    border: 1px solid #ccc;
+	height: 30px;
+}
+.scwacpbm_lottype_item_color {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+	margin-left: 20px;
+}
+.scwacpbm_lottype_item_check {
+    float: left;
+    margin-left: 20px;
+}
+.scwacpbm_lottype_item_save {
+    float: left;
+    background: #317439;
+    color: #fff;
+    width: 80px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.scwacpbm_lottype_item_del {
+    float: left;
+	background: #b94e32;
+	color: #fff;
+	width: 90px;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	cursor: pointer;
+	margin-left: 5px;
+}
+.scwacpbm_mapping {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+.scwacpbm_mapping_header {
+    float: left;
+    width: 100%;
+    font-weight: bold;
+}
+.scwacpbm_mapping_add {
+    float: left;
+    width: 100%;
+}
+.scwacpbm_mapping_add_head {
+    float: left;
+    width: 100%;
+    margin-top: 5px;
+}
+.scwacpbm_mapping_listpreview {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+	text-align: center;
+}
+.scwacpbm_mapping_list {
+    float: left;
+    width: 100%;
+	margin-top: 5px;
+}
+.scwacpbm_mapping_preview {
+    margin-top: 20px;
+	display: inline-block;
+	max-width: 100%;
+	position: relative;
+}
+.scwacpbm_mapping_preview_image {
+    width: 100%;
+	height: 100%;
+}
+.scwacpbm_mapping_preview_color {
+    float: left;
+    width: 100%;
+    text-indent: -9999em;
+    height: 100%;
+}
+.scwacpbm_lotsize {
+    float: left;
+    width: 100%;
+	margin-top: 10px;
+}
+.scwacpbm_lotsize_label {
+    float: left;
+}
+.scwacpbm_lotsize_width {
+    float: left;
+    border: 1px solid #ccc;
+    margin-left: 20px;
+	height: 30px;
+}
+.scwacpbm_lotsize_height {
+    float: left;
+    border: 1px solid #ccc;
+    margin-left: 20px;
+	height: 30px;
+}
+.scwacpbm_lotsize_save {
+    float: left;
+    background: #317439;
+    color: #fff;
+    width: 80px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.scwacpbm_mapping_add_label {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+	width: 120px;
+}
+.scwacpbm_mapping_add_type {
+    float: left;
+    height: 30px !important;
+}
+.scwacpbm_mapping_add_width {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+	width: 80px;
+}
+.scwacpbm_mapping_add_height {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+	width: 80px;
+}
+.scwacpbm_mapping_add_cx {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+	width: 110px;
+}
+.scwacpbm_mapping_add_cy {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+	width: 110px;
+}
+.scwacpbm_mapping_add_tilt {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+	width: 100px;
+}
+.scwacpbm_mapping_add_button {
+    float: left;
+    width: 80px;
+    background: teal;
+    color: #fff;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 1px;
+	cursor: pointer;
+}
+.scwacpbm_mapping_ref_button {
+    float: left;
+    width: 80px;
+    background: teal;
+    color: #fff;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 20px;
+    margin-top: 1px;
+	cursor: pointer;
+}
+.scwacpbm_slot {
+    float: left;
+    width: 100%;
+	margin-top: 5px;
+}
+.scwacpbm_slot_label {
+    float: left;
+    border: 1px solid #ccc;
+    width: 120px;
+	height: 30px;
+}
+.scwacpbm_slot_type {
+    float: left;
+    height: 30px !important;
+}
+.scwacpbm_slot_width {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 80px;
+}
+.scwacpbm_slot_height {
+    float: left;
+    width: 80px;
+    border: 1px solid #ccc;
+    height: 30px;
+}
+.scwacpbm_slot_cx {
+    float: left;
+    border: 1px solid #ccc;
+    width: 110px;
+    height: 30px;
+}
+.scwacpbm_slot_cy {
+    float: left;
+    border: 1px solid #ccc;
+    width: 110px;
+    height: 30px;
+}
+.scwacpbm_slot_tilt {
+    float: left;
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 100px;
+}
+.scwacpbm_slot_save {
+    float: left;
+    width: 80px;
+    background: #317439;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+	margin-top: 1px;
+}
+.scwacpbm_slot_del {
+    float: left;
+    background: #b94e32;
+    color: #fff;
+    width: 90px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    margin-left: 5px;
+	margin-top: 1px;
+}
+.scwacpbm_mapping_preview_slot {
+    position: absolute;
+	color: #fff;
+}
+.scwacpbm_lotprice {
+    float: left;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.scwacpbm_lotprice_head {
+    float: left;
+    font-weight: bold;
+    width: 100%;
+}
+.scwacpbm_lotprice_con {
+    float: left;
+    width: 100%;
+    margin-top: 5px;
+}
+.scwacpbm_lotprice_item {
+    float: left;
+    width: 100%;
+	margin-top: 5px;
+}
+.scwacpbm_lotprice_item_name {
+    float: left;
+    width: 15%;
+}
+.scwacpbm_lotprice_item_price {
+    float: left;
+    border: 1px solid #ccc;
+}
+.scwacpbm_lotprice_save {
+    float: left;
+    background: #206620;
+    color: #fff;
+    width: 80px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+	cursor: pointer;
+}
