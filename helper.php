@@ -9,21 +9,21 @@ $task = $_POST["task"];
 
 if($task == "add_park"){
 	$parkName = $_POST["parkName"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_parklots';
 	$rs = $wpdb->get_results("SELECT * from $tableName where parklotname = '".$parkName."'");
-	
+
 	if($rs){
 		echo "This Parking Lot already exists!";
 	}else{
 		echo $wpdb->insert( $tableName,
-			array( 
+			array(
 				'parklotname' => $parkName
 		));
 	}
 }elseif($task == "delete_lot"){
 	$lotId = $_POST["lotId"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_parklots';
 	echo $wpdb->delete( $tableName, array(
 		'id' => $lotId
@@ -31,7 +31,7 @@ if($task == "add_park"){
 }elseif($task == "save_lot_name"){
 	$lotId = $_POST["lotId"];
 	$newLotname = $_POST["newLotname"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_parklots';
 	echo $wpdb->update($tableName, array(
 		'parklotname' => $newLotname
@@ -42,7 +42,7 @@ if($task == "add_park"){
 	$lotId = $_POST["lotId"];
 	$color = $_POST["color"];
 	$bg = $_POST["bg"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_parklots';
 	echo $wpdb->update($tableName, array(
 		'lotcolor' => $color,
@@ -54,7 +54,7 @@ if($task == "add_park"){
 	$lotId = $_POST["lotId"];
 	$width = $_POST["width"];
 	$height = $_POST["height"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_parklots';
 	echo $wpdb->update($tableName, array(
 		'width' => $width,
@@ -67,15 +67,15 @@ if($task == "add_park"){
 	$typename = $_POST["typename"];
 	$typecolor = $_POST["typecolor"];
 	$isbooked = $_POST["isbooked"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_typeofslot';
 	$rs = $wpdb->get_results("SELECT * from $tableName where lotid = '".$lotId."' and typename = '".$typename."'");
-	
+
 	if($rs){
 		echo "This type already exists!";
 	}else{
 		echo $wpdb->insert( $tableName,
-			array( 
+			array(
 				'lotid' => $lotId,
 				'typename' => $typename,
 				'typecolor' => $typecolor,
@@ -88,9 +88,9 @@ if($task == "add_park"){
 	$thistypecolor = $_POST["thistypecolor"];
 	$thisisbooked = $_POST["thisisbooked"];
 	$lotId = $_POST["lotId"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_typeofslot';
-	
+
 	if($thisisbooked){
 		$wpdb->update($tableName, array(
 			'isbooked' => "0"
@@ -98,7 +98,7 @@ if($task == "add_park"){
 			'lotid' => $lotId
 		));
 	}
-	
+
 	echo $wpdb->update($tableName, array(
 		'typename' => $thistypename,
 		'typecolor' => $thistypecolor,
@@ -108,7 +108,7 @@ if($task == "add_park"){
 	));
 }elseif($task == "delete_type"){
 	$thistypeid = $_POST["thistypeid"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_typeofslot';
 	echo $wpdb->delete( $tableName, array(
 		'id' => $thistypeid
@@ -122,15 +122,15 @@ if($task == "add_park"){
 	$mleft = $_POST["mleft"];
 	$mtop = $_POST["mtop"];
 	$tilt = $_POST["tilt"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_slots';
 	$rs = $wpdb->get_results("SELECT * from $tableName where lotid = '".$lotId."' and label = '".$label."'");
-	
+
 	if($rs){
 		echo "This slot already exists!";
 	}else{
 		echo $wpdb->insert( $tableName,
-			array( 
+			array(
 				'lotid' => $lotId,
 				'label' => $label,
 				'type' => $type,
@@ -150,7 +150,7 @@ if($task == "add_park"){
 	$thisslotcx = $_POST["thisslotcx"];
 	$thisslotcy = $_POST["thisslotcy"];
 	$thisslottilt = $_POST["thisslottilt"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_slots';
 
 	echo $wpdb->update($tableName, array(
@@ -166,7 +166,7 @@ if($task == "add_park"){
 	));
 }elseif($task == "delete_slot"){
 	$thisslotid = $_POST["thisslotid"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_slots';
 	echo $wpdb->delete( $tableName, array(
 		'id' => $thisslotid
@@ -174,7 +174,7 @@ if($task == "add_park"){
 }elseif($task == "save_price"){
 	$lotId = $_POST["lotId"];
 	$string = $_POST["string"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_prices';
 	$check = explode("@", $string);
 	foreach($check as $price){
@@ -190,7 +190,7 @@ if($task == "add_park"){
 			));
 		}else{
 			$wpdb->insert( $tableName,
-				array( 
+				array(
 					'type' => $p[0],
 					'price' => $p[1],
 					'pricetype' => $p[2],
@@ -202,7 +202,7 @@ if($task == "add_park"){
 }elseif($task == "add_profiletoproduct"){
 	$profileid = $_POST["profileid"];
 	$productid = $_POST["productid"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_products';
 	$rs = $wpdb->get_results("SELECT * from $tableName where productid = ".$productid);
 	if($rs){
@@ -213,7 +213,7 @@ if($task == "add_park"){
 		));
 	}else{
 		echo $wpdb->insert( $tableName,
-			array( 
+			array(
 				'lotid' => $profileid,
 				'productid' => $productid
 		));
@@ -224,39 +224,39 @@ if($task == "add_park"){
 	$dateto = $_POST["dateto"];
 	$proid = $_POST["proid"];
 	$posttype = filter_var($_POST["posttype"], FILTER_SANITIZE_STRING);
-	
+
 	$_SESSION["datefrom".$proid] = $datefrom;
 	$_SESSION["dateto".$proid] = $dateto;
 	$_SESSION["seats".$proid] = $seats;
-	
+
 	if($posttype == "post"){
 		$tableProducts = $wpdb->prefix . 'scwacpbm_products';
 		$tableSlots = $wpdb->prefix . 'scwacpbm_slots';
 		$tablePrices = $wpdb->prefix . 'scwacpbm_prices';
-		
+
 		$selectedLot = $wpdb->get_results( "SELECT * FROM $tableProducts where productid = ".$proid );
 		$lotid = $selectedLot[0]->lotid;
-		
+
 		$totalPrice = 0;
 		if($lotid){
-			
+
 			$datefrom = $_SESSION["datefrom".$proid];
 			$dateto = $_SESSION["dateto".$proid];
 			$seats = $_SESSION["seats".$proid];
-			
+
 			if($seats){
 				$sessSeats = explode("@", $seats);
-				
+
 				foreach($sessSeats as $s){
 					$checSlot = $wpdb->get_results( "SELECT * FROM $tableSlots where lotid = ".$lotid." and label = '".$s."'" );
 					$typeid = $checSlot[0]->type;
-					
+
 					$checPrice = $wpdb->get_results( "SELECT * FROM $tablePrices where lotid = ".$lotid." and type = '".$typeid."'" );
 					if(isset($checPrice[0]->price)) $price = $checPrice[0]->price;
 					else $price = 0;
 					if(isset($checPrice[0]->pricetype)) $pricetype = $checPrice[0]->pricetype;
 					else $pricetype = "";
-					
+
 					if($datefrom && $dateto){
 						if($pricetype == "hour"){
 							$hours = round((strtotime($dateto) - strtotime($datefrom))/3600, 1);
@@ -264,7 +264,7 @@ if($task == "add_park"){
 						}elseif($pricetype == "day"){
 							$seconds = strtotime($dateto) - strtotime($datefrom);
 							$days = ceil($seconds / 86400);
-							
+
 							if($days == 0)
 								$totalPrice += $price;
 							else
@@ -279,26 +279,26 @@ if($task == "add_park"){
 				}
 			}
 		}
-		
+
 		echo $totalPrice;
 	}
 }elseif($task == "check_schedule"){
 	$schedule = $_POST["schedule"];
 	$proid = $_POST["proid"];
-	
+
 	$tableOrders = $wpdb->prefix . 'scwacpbm_orders';
 	$tableTypeofslot = $wpdb->prefix . 'scwacpbm_typeofslot';
 	$tableProducts = $wpdb->prefix . 'scwacpbm_products';
 	$tableSlots = $wpdb->prefix . 'scwacpbm_slots';
-	
+
 	$rs = $wpdb->get_results("SELECT * from $tableOrders where proid = ".$proid." and (('".$schedule."' between datefrom and dateto) or datefrom = '".$schedule."')");
-	
+
 	$checkLot = $wpdb->get_results("SELECT * from $tableProducts where productid = ".$proid);
 	$lotid = $checkLot[0]->lotid;
 	$checkType = $wpdb->get_results("SELECT * from $tableTypeofslot where lotid = ".$lotid." and isbooked = 1");
 	$typeid = $checkType[0]->id;
 	$checkBooked = $wpdb->get_results("SELECT * from $tableSlots where lotid = ".$lotid." and type = ".$typeid);
-	
+
 	$list = array();
 	if($rs){
 		foreach($rs as $r){
@@ -315,11 +315,11 @@ if($task == "add_park"){
 			array_push($list, $bk->label);
 		}
 	}
-	
+
 	echo json_encode($list, 1);
 }elseif($task == "delete_booked_seats"){
 	$sid = $_POST["sid"];
-	
+
 	$tableName = $wpdb->prefix . 'scwacpbm_orders';
 	echo $wpdb->delete( $tableName, array(
 		'id' => $sid
@@ -335,9 +335,9 @@ if($task == "add_park"){
 	$seats = $_POST["seats"];
 	$datefrom = $_POST["datefrom"];
 	$dateto = $_POST["dateto"];
-	
+
 	$adminEmail = get_option( 'admin_email' );
-	
+
 	$subject = 'Order Information';
 	$body = 'Order information<br>';
 	$body .= 'Seats: '.str_replace("@", " ", $seats).'<br>';
@@ -351,14 +351,14 @@ if($task == "add_park"){
 	$body .= 'Note: '.$note.'<br>';
 	$body .= 'Total: '.$total.'<br>';
 	$headers = array('Content-Type: text/html; charset=UTF-8');
-	 
+
 	echo wp_mail( array($email, $adminEmail), $subject, $body, $headers );
-	
+
 	$seatsnew = explode("@", $seats);
-	
+
 	$orderTable = $wpdb->prefix . 'scwacpbm_orders';
 	$wpdb->insert( $orderTable,
-		array( 
+		array(
 			'orderid' => "",
 			'proid' => $proId,
 			'slots' => $seats,
@@ -370,26 +370,26 @@ if($task == "add_park"){
 			'phone' => $phone,
 			'note' => $note,
 			'total' => $total
-		) 
+		)
 	);
 }elseif($task == "check_schedule2"){
 	$schedule = $_POST["schedule"];
 	$datefrom = $_POST["datefrom"];
 	$proid = $_POST["proid"];
-	
+
 	$tableOrders = $wpdb->prefix . 'scwacpbm_orders';
 	$tableTypeofslot = $wpdb->prefix . 'scwacpbm_typeofslot';
 	$tableProducts = $wpdb->prefix . 'scwacpbm_products';
 	$tableSlots = $wpdb->prefix . 'scwacpbm_slots';
-	
+
 	$rs = $wpdb->get_results("SELECT * from $tableOrders where proid = ".$proid." and ((datefrom between '".$datefrom."' and '".$schedule."') or (dateto between '".$datefrom."' and '".$schedule."'))");
-	
+
 	$checkLot = $wpdb->get_results("SELECT * from $tableProducts where productid = ".$proid);
 	$lotid = $checkLot[0]->lotid;
 	$checkType = $wpdb->get_results("SELECT * from $tableTypeofslot where lotid = ".$lotid." and isbooked = 1");
 	$typeid = $checkType[0]->id;
 	$checkBooked = $wpdb->get_results("SELECT * from $tableSlots where lotid = ".$lotid." and type = ".$typeid);
-	
+
 	$list = array();
 	if($rs){
 		foreach($rs as $r){
@@ -406,6 +406,6 @@ if($task == "add_park"){
 			array_push($list, $bk->label);
 		}
 	}
-	
+
 	echo json_encode($list, 1);
 }
