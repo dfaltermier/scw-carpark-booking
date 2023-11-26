@@ -562,7 +562,7 @@ function scwacpbm_fontend_single(){
         </span>
     </div>
     <div class="scwacpbm_map">
-        <div class="scwacpbm_map_head">Choose your Slots</div>
+        <div class="scwacpbm_map_head">Choose your Spots</div>
         <div class="scwacpbm_map_bg" style="width: <?php echo $lotdata[0]->width ?>px; height: <?php echo $lotdata[0]->height ?>px">
             <?php
 						if($lotdata[0]->lotbg){
@@ -960,7 +960,7 @@ function scwacpbm_content($content){
         </span>
     </div>
     <div class="scwacpbm_map">
-        <div class="scwacpbm_map_head">Choose your Slots</div>
+        <div class="scwacpbm_map_head">Choose your Spots</div>
         <div class="scwacpbm_map_bg" style="width: <?php echo $lotdata[0]->width ?>px; height: <?php echo $lotdata[0]->height ?>px">
             <?php
 						if($lotdata[0]->lotbg){

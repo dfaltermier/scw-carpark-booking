@@ -4,11 +4,9 @@ jQuery(document).ready(function () {
     // Date/time format of our 'to' and 'from' form input fields.
     var dateTimeFormat = 'd-m-Y H:i';
 
-     // Force our to/from dates.
-    var lockedFromDate = '25-11-2023 12:30';
-    var lockedToDate   = '30-11-2023 16:30';
+    var contentArea = jQuery(".scwacpbm_content");
 
-    jQuery("form.cart").before(jQuery(".scwacpbm_content").show());
+    jQuery("form.cart").before(contentArea.show());
     var url = jQuery(".scwacpbm_url").val();
     var proid = jQuery(".product_id").val();
     var bookedColor = jQuery(".scwacpbm_type_booked").val();
@@ -153,9 +151,10 @@ jQuery(document).ready(function () {
     }
 
     /**
+     * Check for previous slot reservations.
      *
-     * @param string  schedule
-     * @param string  dateFrom
+     * @param string  schedule  Single date value ('to' or 'from')
+     * @param string  dateFrom  Always the 'from' date value. 'schedule' is the 'to' value.
      */
     function checkSchedule(schedule, dateFrom) {
         var datefrom = jQuery('.scwacpbm_date_from_input').val();
@@ -167,13 +166,13 @@ jQuery(document).ready(function () {
             proid: proid
         };
 
-        // Modify if we're checking the 'from' date, afterall.
+        // Modify if we're checking the 'from' date also.
         if (dateFrom) {
             data.task = 'check_schedule2';
             data.datefrom = dateFrom;
         }
 
-        // Check for previous reservations.
+        // Check for previous slot reservations.
         jQuery.ajax({
             type: "POST",
             url: url + "helper.php",
@@ -203,7 +202,7 @@ jQuery(document).ready(function () {
     }
 
     /**
-     *
+     * Attach datetimepicker behavior to each 'to/from' input fields.
      */
     function initDateTimePickers() {
         /**
@@ -229,6 +228,8 @@ jQuery(document).ready(function () {
         }
 
         /**
+         * Callback functions for our datetimepickers when the date and times
+         * are selected.
          *
          * @param string schedule
          */
@@ -245,6 +246,7 @@ jQuery(document).ready(function () {
             }
         }
 
+        // Init the 'to/from' date/time pickers.
         jQuery('.scwacpbm_date_from_input').datetimepicker({
             format: dateTimeFormat,
             step: 15,
@@ -273,29 +275,107 @@ jQuery(document).ready(function () {
     }
 
     /**
-     *
+     * Force our to/from date input fields to static values which the user cannot change.
+     * There will be no datetimepicker.
+     */
+    function initLockedDates() {
+        // Force our to/from dates. Make SURE the dateLabel string dates match those in
+        // fromDate and toDate.
+        var fromDate  = '24-11-2023 12:30';
+        var toDate    = '30-11-2023 16:30';
+        var dateLabel = 'Reservation Dates From November 24 - 30, 2023';
+
+        // The label replaces the 'Choose Date & Time' label normally displayed when the
+        // datetimepickers are active.
+        jQuery('.scwacpbm_date_head').empty().html(dateLabel);
+
+        // We'll add CSS that will make the 'from' and 'to' date input fields
+        // disappear from the screen. We don't want them distracting the user.
+        var css = {
+            border: '0',
+            clip: 'rect(0 0 0 0)',
+            height: '1px',
+            margin: '-1px',
+            overflow: 'hidden',
+            padding: '0',
+            position: 'absolute',
+            width: '1px'
+        };
+
+        // Now, hide the 'from' and 'to' input fields.
+        jQuery('.scwacpbm_date_to')
+            .attr('aria-hidden', 'true')
+            .css(css);
+
+        jQuery('.scwacpbm_date_from')
+            .attr('aria-hidden', 'true')
+            .css(css);
+
+        // Keep the input fields now that they are offscreen, but make them
+        // readonly and non-tabbable. They still need to be populated with
+        // our 'to/from' dates so that the form can be submitted and
+        // checkSchedule() below can read the value from the input fields.
+        jQuery('.scwacpbm_date_from_input')
+            .val(fromDate)
+            .attr('readonly', 'readonly')
+            .attr('tabindex', '-1');
+
+        jQuery('.scwacpbm_date_to_input')
+            .val(toDate)
+            .attr('readonly', 'readonly')
+            .attr('tabindex', '-1');
+
+        // Check if any slots are already reserved. This will make an AJAX call
+        // and change the color of any that are reserved.
+        checkSchedule(toDate, fromDate);
+    }
+
+    /**
+     * Init the price label so that the displayed price increments with every parking
+     * slot selected.
+     */
+    function initPriceLabel() {
+        // Extract the text 'Available: $20 per one' from the yellow legend box.
+        // Change the text to 'Available: $20 per spot.'
+        var labelText = jQuery('.scwacpbm_type_price').text().replace('one', 'spot');
+        jQuery('.scwacpbm_type_price').text(labelText);
+
+        // Extract the price that is charged for each slot from the labelText.
+        var priceArray = labelText.match(/\d+/);
+        var price = typeof(priceArray) == 'object' ? parseInt(priceArray[0]) : 0;
+
+        // Get a handle to the DOM element where the price is displayed. Init to $0.00.
+        var priceTotalLabel = jQuery('.woocommerce-Price-amount bdi');
+        priceTotalLabel.text('$0.00');
+
+        // When a slot is clicked by the user, update the displayed price.
+        jQuery(".scwacpbm_map_slot").on('click', function() {
+            var numberOfSelectedSlots = jQuery(".scwacpbm_map_slots").find('.active').size();
+            var totalPrice = numberOfSelectedSlots * price;
+            priceTotalLabel.text('$' + totalPrice.toFixed(2));
+        });
+    }
+
+    /**
+     * Kick things off!
      */
     function init() {
-        // Force our to/from dates.
         var isDateLocked = true;
-        var lockedFromDate = '25-11-2023 12:30';
-        var lockedToDate   = '30-11-2023 16:30';
 
+        // Force our to/from dates to static dates which the user cannot change.
         if ( isDateLocked ) {
-            jQuery('.scwacpbm_date_from_input')
-                .val(lockedFromDate)
-                .attr('readonly', 'readonly');
-
-            jQuery('.scwacpbm_date_to_input')
-                .val(lockedToDate)
-                .attr('readonly', 'readonly');
-
-            checkSchedule(lockedToDate, lockedFromDate);
+            initLockedDates();
         }
+        // Or, fallback to the default datepicker input fields.
         else {
             initDateTimePickers();
         }
+
+        // Init the price label so that the displayed price increments with every parking
+        // slot selected.
+        initPriceLabel();
     }
 
+    // Let's kick it!
     init();
 });
