@@ -409,11 +409,23 @@ if($task == "add_park"){
 
 	echo json_encode($list, 1);
 }
-elseif ($task === "save_fixed_dates") {
+elseif ( $task === "get_fixed_dates" ) {
+    $proid = $_POST["proid"];
+
+	$tableProducts   = $wpdb->prefix . 'scwacpbm_products';
+    $tableFixedDates = $wpdb->prefix . 'scwacpbm_fixed_dates';
+
+    $row   = $wpdb->get_results("SELECT lotid from {$tableProducts} where productid = {$proid}");
+    $lotId = $row[0]->lotid ?? '';
+    $row   = $wpdb->get_results("SELECT * from {$tableFixedDates} where lotid = {$lotId}");
+
+    echo json_encode($row, 1);
+}
+elseif ($task === "save_fixed_dates" ) {
 	$lotId     = $_POST['lotId'];
-	$from      = $_POST['from'];
-    $to        = $_POST['to'];
-    $heading   = $_POST['heading'];
+	$from      = trim( $_POST['from'] );
+    $to        = trim( $_POST['to'] );
+    $heading   = trim( $_POST['heading'] );
 	$tableName = $wpdb->prefix . 'scwacpbm_fixed_dates';
     $status    = 1;
 

@@ -277,17 +277,15 @@ jQuery(document).ready(function () {
     /**
      * Force our to/from date input fields to static values which the user cannot change.
      * There will be no datetimepicker.
+     *
+     * @param string fromDate    Reservation start date
+     * @param string toDate      Reservation end date
+     * @param string heading     Display label with reservation dates
      */
-    function initLockedDates() {
-        // Force our to/from dates. Make SURE the dateLabel string dates match those in
-        // fromDate and toDate.
-        var fromDate  = '24-11-2023 12:30';
-        var toDate    = '30-11-2023 16:30';
-        var dateLabel = 'Reservation Dates From November 24 - 30, 2023';
-
+    function initFixedDates(fromDate, toDate, heading) {
         // The label replaces the 'Choose Date & Time' label normally displayed when the
         // datetimepickers are active.
-        jQuery('.scwacpbm_date_head').empty().html(dateLabel);
+        jQuery('.scwacpbm_date_head').empty().html(heading);
 
         // We'll add CSS that will make the 'from' and 'to' date input fields
         // disappear from the screen. We don't want them distracting the user.
@@ -331,6 +329,40 @@ jQuery(document).ready(function () {
     }
 
     /**
+     * Initialize our reservation dates.
+     */
+    function initDates() {
+        // Get the fixed dates from the backend.
+        jQuery.ajax({
+            type: "POST",
+            url: url + "helper.php",
+            data:  {
+                task: "get_fixed_dates",
+                proid: proid
+            },
+            success: function (data) {
+                console.log(data[0]);
+
+                // Initialize our fixed dates if we have them.
+                if (data.length > 0) {
+                    var from    = data[0]['from'] ?? '';
+                    var to      = data[0]['to'] ?? '';
+                    var heading = data[0]['heading'] ?? '';
+
+                    if (from && to && heading) {
+                        initFixedDates(from, to, heading);
+                        return;
+                    }
+                }
+
+                // Or, fallback to the default datepicker input fields.
+                initDateTimePickers();
+            },
+            dataType: 'json'
+        });
+    }
+
+    /**
      * Init the price label so that the displayed price increments with every parking
      * slot selected.
      */
@@ -360,16 +392,8 @@ jQuery(document).ready(function () {
      * Kick things off!
      */
     function init() {
-        var isDateLocked = true;
-
-        // Force our to/from dates to static dates which the user cannot change.
-        if ( isDateLocked ) {
-            initLockedDates();
-        }
-        // Or, fallback to the default datepicker input fields.
-        else {
-            initDateTimePickers();
-        }
+        // Init the reservations dates.
+        initDates();
 
         // Init the price label so that the displayed price increments with every parking
         // slot selected.
