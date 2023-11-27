@@ -409,3 +409,20 @@ if($task == "add_park"){
 
 	echo json_encode($list, 1);
 }
+elseif ($task == "save_fixed_dates") {
+	$lotId     = $_POST['lotId'];
+	$from      = $_POST['from'];
+    $to        = $_POST['to'];
+    $heading   = $_POST['heading'];
+	$tableName = $wpdb->prefix . 'scwacpbm_fixed_dates';
+
+	echo $wpdb->update( $tableName,
+        [
+		    'from'    => $from,
+            'to'      => $to,
+            'heading' => $heading
+        ], [
+            'id' => $lotId
+        ]
+    );
+}

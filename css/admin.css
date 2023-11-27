@@ -513,3 +513,51 @@
     margin-top: 10px;
 	cursor: pointer;
 }
+
+.scwacpbm_fixeddates {
+    float: left;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.5rem;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.scwacpbm_fixeddates_head {
+    font-weight: bold;
+}
+.scwacpbm_fixeddates_container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+.scwacpbm_fixeddates_from,
+.scwacpbm_fixeddates_to,
+.scwacpbm_fixeddates_heading {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.scwacpbm_fixeddates_from_label,
+.scwacpbm_fixeddates_to_label,
+.scwacpbm_fixeddates_label {
+    width: 188px;
+}
+
+
+
+
+.scwacpbm_fixeddates_heading_input {
+    width: 450px;
+}
+.scwacpbm_fixeddates_save {
+    background: #206620;
+    color: #fff;
+    text-align: center;
+    padding: 6px 17px;
+	cursor: pointer;
+    width: fit-content;
+}
+
+
