@@ -392,7 +392,7 @@ jQuery(document).ready(function () {
      * Kick things off!
      */
     function init() {
-        // Init the reservations dates.
+        // Init the reservation dates.
         initDates();
 
         // Init the price label so that the displayed price increments with every parking
