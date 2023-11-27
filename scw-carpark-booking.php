@@ -302,11 +302,11 @@ function smartcms_scwacpbm_parameters(){
                         </span>
 
                         <?php
-                            $fixedDates = $wpdb->get_results("SELECT * from {$fixeddatesTB} where id = {$lot->id}");
+                            // Display Fixed Dates
+                            $fixedDates       = $wpdb->get_results("SELECT * from {$fixeddatesTB} where id = {$lot->id}");
                             $fixedDateFrom    = isset( $fixedDates[0]->from ) ? $fixedDates[0]->from :  '';
                             $fixedDateTo      = isset( $fixedDates[0]->to ) ? $fixedDates[0]->to :  '';
                             $fixedDateHeading = isset( $fixedDates[0]->heading ) ? $fixedDates[0]->heading :  '';
-
                         ?>
                         <div class="scwacpbm_fixeddates">
                             <div class="scwacpbm_fixeddates_head">Fixed Dates (Optional)</div>

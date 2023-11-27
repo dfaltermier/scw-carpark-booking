@@ -415,7 +415,7 @@ elseif ($task === "save_fixed_dates") {
     $to        = $_POST['to'];
     $heading   = $_POST['heading'];
 	$tableName = $wpdb->prefix . 'scwacpbm_fixed_dates';
-    $status    = 0;
+    $status    = 1;
 
     $row = $wpdb->get_results("SELECT * from $tableName where id = {$lotId}");
 
@@ -440,6 +440,8 @@ elseif ($task === "save_fixed_dates") {
             ]
         );
     }
+
+    $status = $status === false ? 0 : 1;
 
     echo $status;
 }
