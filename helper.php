@@ -417,7 +417,7 @@ elseif ($task === "save_fixed_dates") {
 	$tableName = $wpdb->prefix . 'scwacpbm_fixed_dates';
     $status    = 1;
 
-    $row = $wpdb->get_results("SELECT * from $tableName where id = {$lotId}");
+    $row = $wpdb->get_results("SELECT * from $tableName where lotid = {$lotId}");
 
     if ( $row ) {
         $status = $wpdb->update( $tableName,
@@ -426,14 +426,14 @@ elseif ($task === "save_fixed_dates") {
                 'to'      => $to,
                 'heading' => $heading
             ], [
-                'id' => $lotId
+                'lotid' => $lotId
             ]
         );
     }
     else {
         $status = $wpdb->insert( $tableName,
             [
-                'id'      => $lotId,
+                'lotid'   => $lotId,
                 'from'    => $from,
                 'to'      => $to,
                 'heading' => $heading
@@ -441,7 +441,6 @@ elseif ($task === "save_fixed_dates") {
         );
     }
 
-    $status = $status === false ? 0 : 1;
-
-    echo $status;
+    // An error occurs when 'false' is returned from above.
+    echo ( $status === false ? 0 : 1 );
 }

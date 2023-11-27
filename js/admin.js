@@ -2,6 +2,9 @@
 var upload_image_button=false;
 jQuery(document).ready(function(){
 
+    // Date/time format of our 'to' and 'from' form datetimepicker input fields.
+    var dateTimeFormat = 'd-m-Y H:i';
+
 	var width = jQuery("#wpbody-content").width() - 42;
 
 	jQuery('.scwacpbm_lotbg_con_upload').click(function(){
@@ -422,29 +425,27 @@ jQuery(document).ready(function(){
         /**
          * Configure Fixed Dates
          */
-        // Date/time format of our 'to' and 'from' form input fields.
-        var dateTimeFormat = 'd-m-Y H:i';
-
         // Init the 'to/from' date/time pickers.
-        jQuery('.scwacpbm_fixeddates_from_input').datetimepicker({
+        jQuery('.scwacpbm_fixeddates_from_input', elthis).datetimepicker({
             format: dateTimeFormat,
             step: 15,
             minDate: 0,
             minTime: 0
         });
 
-        jQuery('.scwacpbm_fixeddates_to_input').datetimepicker({
+        jQuery('.scwacpbm_fixeddates_to_input', elthis).datetimepicker({
             format: dateTimeFormat,
             step: 15,
             minDate: 0,
             minTime: 0
         });
 
-        jQuery(".scwacpbm_fixeddates_save").on('click', function() {
-            var lotId    = elthis.children(".scwacpbm_lot_id").val();
-            var fromDate = jQuery(".scwacpbm_fixeddates_from_input").val().trim() || '';
-            var toDate   = jQuery(".scwacpbm_fixeddates_to_input").val().trim() || '';
-            var heading  = jQuery(".scwacpbm_fixeddates_heading_input").val().trim() || '';
+        // Handle the 'save' button click.
+		elthis.find(".scwacpbm_fixeddates_save").on('click', function() {
+            var lotId      = elthis.find('.scwacpbm_lot_id').val();
+            var fromDate   = jQuery(".scwacpbm_fixeddates_from_input", elthis).val().trim() || '';
+            var toDate     = jQuery(".scwacpbm_fixeddates_to_input", elthis).val().trim() || '';
+            var heading    = jQuery(".scwacpbm_fixeddates_heading_input", elthis).val().trim() || '';
 
             jQuery.ajax({
                 url: "../wp-content/plugins/scw-carpark-booking/helper.php",
@@ -457,12 +458,10 @@ jQuery(document).ready(function(){
                 },
                 type: 'POST',
                 beforeSend: function(data) {
-                    jQuery(".scwacpbm_fixeddates_save").append(' <i class="fa fa-refresh fa-spin fixeddatesspin"></i>');
+                    jQuery(".scwacpbm_fixeddates_save", elthis).append(' <i class="fa fa-refresh fa-spin fixeddatesspin"></i>');
                 },
                 success: function(data) {
-                    jQuery(".fixeddatesspin").remove();
-
-                    console.log(data);
+                    jQuery(".fixeddatesspin", elthis).remove();
 
                     if (data == "1") {
 						alert("Saved!");

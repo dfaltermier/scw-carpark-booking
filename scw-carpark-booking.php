@@ -77,10 +77,12 @@ function scwacpbm_install(){
 
     $fixedDatesSql = "CREATE TABLE $fixeddatesTB (
         `id` int(11) NOT NULL AUTO_INCREMENT,
+        `lotid` int(11) DEFAULT NULL,
         `from` varchar(255) DEFAULT NULL,
         `to` varchar(255) DEFAULT NULL,
         `heading` varchar(255) DEFAULT NULL,
-        PRIMARY KEY (`id`)
+        PRIMARY KEY (`id`),
+        FOREIGN KEY (lotid) REFERENCES {$parkLotsTB}(id)
     ) $charset_collate;";
 
     $productsSql = "CREATE TABLE $productsTB (
@@ -303,7 +305,7 @@ function smartcms_scwacpbm_parameters(){
 
                         <?php
                             // Display Fixed Dates
-                            $fixedDates       = $wpdb->get_results("SELECT * from {$fixeddatesTB} where id = {$lot->id}");
+                            $fixedDates       = $wpdb->get_results("SELECT * from {$fixeddatesTB} where lotid = {$lot->id}");
                             $fixedDateFrom    = isset( $fixedDates[0]->from ) ? $fixedDates[0]->from :  '';
                             $fixedDateTo      = isset( $fixedDates[0]->to ) ? $fixedDates[0]->to :  '';
                             $fixedDateHeading = isset( $fixedDates[0]->heading ) ? $fixedDates[0]->heading :  '';
