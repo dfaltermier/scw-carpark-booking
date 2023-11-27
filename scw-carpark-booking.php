@@ -181,6 +181,7 @@ function smartcms_scwacpbm_parameters(){
     $parkLots = $wpdb->get_results( "SELECT * FROM $parkLotsTB" );
 
     $pricesTB = $wpdb->prefix . 'scwacpbm_prices';
+    $fixeddatesTB = $wpdb->prefix . 'scwacpbm_fixed_dates';
 ?>
     <div class="wrap">
         <div class="scwacpbm_content">
@@ -301,6 +302,10 @@ function smartcms_scwacpbm_parameters(){
                         </span>
 
                         <?php
+                            $fixedDates = $wpdb->get_results("SELECT * from {$fixeddatesTB} where id = {$lot->id}");
+                            $fixedDateFrom    = isset( $fixedDates[0]->from ) ? $fixedDates[0]->from :  '';
+                            $fixedDateTo      = isset( $fixedDates[0]->to ) ? $fixedDates[0]->to :  '';
+                            $fixedDateHeading = isset( $fixedDates[0]->heading ) ? $fixedDates[0]->heading :  '';
 
                         ?>
                         <div class="scwacpbm_fixeddates">
@@ -311,19 +316,19 @@ function smartcms_scwacpbm_parameters(){
                                     <div class="scwacpbm_fixeddates_from_label">From: </div>
                                     <input class="scwacpbm_fixeddates_from_input"
                                         placeholder="31-12-2023 12:30"
-                                        value="<?php echo '31-12-2023 12:31'; ?>">
+                                        value="<?php echo $fixedDateFrom; ?>">
                                 </div>
                                 <div class="scwacpbm_fixeddates_to">
                                     <div class="scwacpbm_fixeddates_to_label">To: </div>
                                     <input class="scwacpbm_fixeddates_to_input"
                                         placeholder="30-1-2024 1:20"
-                                        value="<?php echo '30-1-2024 1:21'; ?>">
+                                        value="<?php echo $fixedDateTo; ?>">
                                 </div>
                                 <div class="scwacpbm_fixeddates_heading">
                                     <div class="scwacpbm_fixeddates_label">Heading to Display:</div>
                                     <input class="scwacpbm_fixeddates_heading_input"
                                         placeholder="Reservation Dates From November 27 - January 30, 2024"
-                                        value="<?php echo 'Reservation Dates From November 27 - January 30, 2024'; ?>">
+                                        value="<?php echo $fixedDateHeading; ?>">
                                 </div>
 
                                 <span class="scwacpbm_fixeddates_save"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</span>

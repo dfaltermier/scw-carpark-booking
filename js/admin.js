@@ -441,6 +441,7 @@ jQuery(document).ready(function(){
         });
 
         jQuery(".scwacpbm_fixeddates_save").on('click', function() {
+            var lotId    = elthis.children(".scwacpbm_lot_id").val();
             var fromDate = jQuery(".scwacpbm_fixeddates_from_input").val().trim() || '';
             var toDate   = jQuery(".scwacpbm_fixeddates_to_input").val().trim() || '';
             var heading  = jQuery(".scwacpbm_fixeddates_heading_input").val().trim() || '';
@@ -460,6 +461,8 @@ jQuery(document).ready(function(){
                 },
                 success: function(data) {
                     jQuery(".fixeddatesspin").remove();
+
+                    console.log(data);
 
                     if (data == "1") {
 						alert("Saved!");
