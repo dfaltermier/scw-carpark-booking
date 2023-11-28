@@ -154,7 +154,7 @@ jQuery(document).ready(function () {
      * Check for previous slot reservations.
      *
      * @param string  schedule  Single date value ('to' or 'from')
-     * @param string  dateFrom  Always the 'from' date value. 'schedule' is the 'to' value.
+     * @param string  dateFrom  Always the 'from' date value when 'schedule' is the 'to' date.
      */
     function checkSchedule(schedule, dateFrom) {
         var datefrom = jQuery('.scwacpbm_date_from_input').val();
@@ -343,7 +343,7 @@ jQuery(document).ready(function () {
             success: function (data) {
                 console.log(data[0]);
 
-                // Initialize our fixed dates if we have them.
+                // Initialize our date input fields with fixed dates, if we have them.
                 if (data.length > 0) {
                     var from    = data[0]['from'] ?? '';
                     var to      = data[0]['to'] ?? '';
@@ -355,7 +355,7 @@ jQuery(document).ready(function () {
                     }
                 }
 
-                // Or, fallback to the default datepicker input fields.
+                // Or, fallback to the default datepicker input fields for the user.
                 initDateTimePickers();
             },
             dataType: 'json'
@@ -368,8 +368,8 @@ jQuery(document).ready(function () {
      */
     function initPriceLabel() {
         // Extract the text 'Available: $20 per one' from the yellow legend box.
-        // Change the text to 'Available: $20 per spot.'
-        var labelText = jQuery('.scwacpbm_type_price').text().replace('one', 'spot');
+        // Change the text to 'Available: $20 each.'
+        var labelText = jQuery('.scwacpbm_type_price').text().replace('per one', 'each');
         jQuery('.scwacpbm_type_price').text(labelText);
 
         // Extract the price that is charged for each slot from the labelText.
