@@ -3,7 +3,7 @@
 * Plugin Name: Advance Car Park Booking Management for WooCommerce
 * Plugin URI: http://codecanyon.net/user/smartcms
 * Description: car park booking for woocommerce product
-* Version: 1.8
+* Version: 1.9
 * Author: SmartCms Team
 * Author URI: http://codecanyon.net/user/smartcms
 * License: GPLv2 or later
